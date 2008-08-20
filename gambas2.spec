@@ -8,8 +8,6 @@ Group:		Development/Languages
 Source0:	http://dl.sourceforge.net/gambas/%{name}-%{version}.tar.bz2
 # Source0-md5:	e77b7c8589facc6bd7af8d4cdbc16bce
 Source1:	%{name}.desktop
-Patch0:		%{name}-Makefile.patch
-Patch1:		%{name}-pdf_hack.patch
 URL:		http://gambas.sourceforge.net/
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	bzip2-devel
@@ -335,25 +333,21 @@ libxslt.
 
 %prep
 %setup -q
-#patch0 -p1
-#patch1 -p1
 
 %build
 ./reconf-all
-%configure \
-	--%{?debug:en}%{!?debug:dis}able-debug
+%configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-#install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
-#install app/src/gambas2/img/logo/gambas-48x48.png \
-#	$RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
+install -D %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
+install -D app/src/gambas2/img/logo/new-logo.png \
+	$RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/*.la
 
@@ -635,8 +629,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gambas2.gambas
 %attr(755,root,root) %{_bindir}/gambas2-database-manager.gambas
 %attr(755,root,root) %{_bindir}/gba2
-#{_desktopdir}/gambas.desktop
-#{_pixmapsdir}/gambas.png
+%{_desktopdir}/%{name}.desktop
+%{_pixmapsdir}/%{name}.png
 
 %files examples
 %defattr(644,root,root,755)

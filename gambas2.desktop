@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Gambas
+Comment=Gambas Development Environment
+Comment[pl]=Środowisko programistyczne Gambas
+Icon=gambas2
+Exec=gambas2
+Terminal=false
+Type=Application
+Categories=Qt;Development;IDE;
+# vi: encoding=utf-8
