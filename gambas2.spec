@@ -328,12 +328,10 @@ These components brings the power of the libxml and libxslt libraries
 to Gambas.
 
 %description gb-xml -l pl.UTF-8
-Te komponenty dostarczają do Gambasa potęgę bibliotek libxml i
-libxslt.
+Te komponenty pozwalają na korzystanie z potęgi bibliotek libxml i
+libxslt z poziomu Gambasa.
 %endif
 
-Te komponenty dostarczają do Gambasa potęgę bibliotek libxml i
-libxslt.
 %prep
 %setup -q
 
