@@ -17,6 +17,7 @@ BuildRequires:	kdelibs-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	libxslt-devel
 BuildRequires:	mysql-devel
+BuildRequires:	omniORB-devel >= 4
 BuildRequires:	postgresql-backend-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	sqlite-devel
@@ -367,129 +368,51 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/%{name}
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/info
-%{_libdir}/%{name}/gb.component
 %{_datadir}/%{name}/info/gb.info
 %{_datadir}/%{name}/info/gb.list
+# '*' because of missing -avoid-version
+%attr(755,root,root) %{_libdir}/%{name}/gb.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.compress.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.compress.bzlib2.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.compress.zlib.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.corba.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.crypt.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.firebird.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.mysql.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.odbc.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.postgresql.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.sqlite2.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.sqlite3.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.debug.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.desktop.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.draw.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.eval.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.ext.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.svg.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.gui.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.image.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.net.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.net.curl.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.net.smtp.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.opengl.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.option.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.pcre.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.pdf.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.ext.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.kde.html.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.kde.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.opengl.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.sound.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.v4l.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.vb.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.xml.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.xml.xslt.so*
 
-%{_libdir}/%{name}/gb.compress.bzlib2.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.compress.bzlib2.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.compress.bzlib2.so.0.0.0
-%{_libdir}/%{name}/gb.compress.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.compress.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.compress.so.0.0.0
-%{_libdir}/%{name}/gb.compress.zlib.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.compress.zlib.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.compress.zlib.so.0.0.0
-%{_libdir}/%{name}/gb.corba.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.corba.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.corba.so.0.0.0
-%{_libdir}/%{name}/gb.crypt.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.crypt.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.crypt.so.0.0.0
-%{_libdir}/%{name}/gb.db.firebird.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.firebird.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.firebird.so.0.0.0
-%{_libdir}/%{name}/gb.db.mysql.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.mysql.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.mysql.so.0.0.0
-%{_libdir}/%{name}/gb.db.odbc.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.odbc.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.odbc.so.0.0.0
-%{_libdir}/%{name}/gb.db.postgresql.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.postgresql.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.postgresql.so.0.0.0
-%{_libdir}/%{name}/gb.db.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.so.0.0.0
-%{_libdir}/%{name}/gb.db.sqlite2.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.sqlite2.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.sqlite2.so.0.0.0
-%{_libdir}/%{name}/gb.db.sqlite3.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.sqlite3.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.sqlite3.so.0.0.0
-%{_libdir}/%{name}/gb.debug.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.debug.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.debug.so.0.0.0
-%{_libdir}/%{name}/gb.desktop.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.desktop.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.desktop.so.0.0.0
-%{_libdir}/%{name}/gb.draw.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.draw.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.draw.so.0.0.0
-%{_libdir}/%{name}/gb.eval.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.eval.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.eval.so.0.0.0
-%{_libdir}/%{name}/gb.gtk.ext.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.ext.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.ext.so.0.0.0
-%{_libdir}/%{name}/gb.gtk.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.so.0.0.0
-%{_libdir}/%{name}/gb.gtk.svg.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.svg.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.svg.so.0.0.0
-%{_libdir}/%{name}/gb.gui.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.gui.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.gui.so.0.0.0
-%{_libdir}/%{name}/gb.image.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.image.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.image.so.0.0.0
-%{_libdir}/%{name}/gb.net.curl.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.net.curl.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.net.curl.so.0.0.0
-%{_libdir}/%{name}/gb.net.smtp.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.net.smtp.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.net.smtp.so.0.0.0
-%{_libdir}/%{name}/gb.net.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.net.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.net.so.0.0.0
-%{_libdir}/%{name}/gb.opengl.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.opengl.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.opengl.so.0.0.0
-%{_libdir}/%{name}/gb.option.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.option.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.option.so.0.0.0
-%{_libdir}/%{name}/gb.pcre.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.pcre.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.pcre.so.0.0.0
-%{_libdir}/%{name}/gb.pdf.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.pdf.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.pdf.so.0.0.0
-%{_libdir}/%{name}/gb.qt.ext.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.qt.ext.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.qt.ext.so.0.0.0
-%{_libdir}/%{name}/gb.qt.kde.html.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.qt.kde.html.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.qt.kde.html.so.0.0.0
-%{_libdir}/%{name}/gb.qt.kde.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.qt.kde.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.qt.kde.so.0.0.0
-%{_libdir}/%{name}/gb.qt.opengl.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.qt.opengl.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.qt.opengl.so.0.0.0
-%{_libdir}/%{name}/gb.qt.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.qt.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.qt.so.0.0.0
-%{_libdir}/%{name}/gb.sdl.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.so.0.0.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.sound.component
-%{_libdir}/%{name}/gb.sdl.sound.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.sound.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.sound.so.0.0.0
-%{_libdir}/%{name}/gb.v4l.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.v4l.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.v4l.so.0.0.0
-%{_libdir}/%{name}/gb.vb.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.vb.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.vb.so.0.0.0
-%{_libdir}/%{name}/gb.xml.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.xml.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.xml.so.0.0.0
-%{_libdir}/%{name}/gb.xml.xslt.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.xml.xslt.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.xml.xslt.so.0.0.0
-
+%{_libdir}/%{name}/gb.component
 %{_libdir}/%{name}/gb.chart.component
 %{_libdir}/%{name}/gb.chart.gambas
 %{_libdir}/%{name}/gb.compress.component
@@ -503,9 +426,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}/gb.desktop.gambas
 %{_libdir}/%{name}/gb.eval.component
 %{_libdir}/%{name}/gb.form.component
+%{_libdir}/%{name}/gb.form.gambas
 %{_libdir}/%{name}/gb.form.dialog.component
 %{_libdir}/%{name}/gb.form.dialog.gambas
-%{_libdir}/%{name}/gb.form.gambas
 %{_libdir}/%{name}/gb.form.mdi.component
 %{_libdir}/%{name}/gb.form.mdi.gambas
 %{_libdir}/%{name}/gb.gtk.component
@@ -524,19 +447,17 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}/gb.pcre.component
 %{_libdir}/%{name}/gb.pdf.component
 %{_libdir}/%{name}/gb.qt.component
-%{_libdir}/%{name}/gb.qt.ext.component
 %{_libdir}/%{name}/gb.qt.gambas
+%{_libdir}/%{name}/gb.qt.ext.component
 %{_libdir}/%{name}/gb.qt.kde.component
 %{_libdir}/%{name}/gb.qt.kde.html.component
 %{_libdir}/%{name}/gb.qt.opengl.component
 %{_libdir}/%{name}/gb.report.component
 %{_libdir}/%{name}/gb.report.gambas
 %{_libdir}/%{name}/gb.sdl.component
+%{_libdir}/%{name}/gb.sdl.sound.component
 %{_libdir}/%{name}/gb.settings.component
 %{_libdir}/%{name}/gb.settings.gambas
-%{_libdir}/%{name}/gb.so
-%attr(755,root,root) %{_libdir}/%{name}/gb.so.0
-%attr(755,root,root) %{_libdir}/%{name}/gb.so.0.0.0
 %{_libdir}/%{name}/gb.v4l.component
 %{_libdir}/%{name}/gb.vb.component
 %{_libdir}/%{name}/gb.web.component
