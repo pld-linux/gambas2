@@ -1,12 +1,12 @@
 Summary:	Gambas - a free VB-like language
 Summary(pl.UTF-8):	Gambas - wolnodostępny język podobny do VB
 Name:		gambas2
-Version:	2.8.0
+Version:	2.8.1
 Release:	0.1
 License:	GPL v2
 Group:		Development/Languages
 Source0:	http://dl.sourceforge.net/gambas/%{name}-%{version}.tar.bz2
-# Source0-md5:	e77b7c8589facc6bd7af8d4cdbc16bce
+# Source0-md5:	94898663d4b8c093dcb432d3cfa2e777
 Source1:	%{name}.desktop
 URL:		http://gambas.sourceforge.net/
 BuildRequires:	SDL_mixer-devel
@@ -37,11 +37,11 @@ Gambas to wolnodostępne środowisko programistyczne oparte na
 interpreterze Basica z rozszerzeniami obiektowymi, podobnym do Visual
 Basica(TM). Przy pomocy Gambasa można szybko projektować graficzne
 interfejsy użytkownika, odwoływać się do baz danych MySQL i
-PostgreSQL, sterować aplikacjami KDE poprzez DCOP, tłumaczyć program
-na wiele języków itd.
+PostgreSQL, sterować aplikacjami KDE poprzez DCOP, tłumaczyć
+program na wiele języków itd.
 
-Ten pakiet dostarcza narzędzia działające z linii poleceń, a także
-interpreter potrzebny do uruchamiania aplikacji Gambas.
+Ten pakiet dostarcza narzędzia działające z linii poleceń, a
+także interpreter potrzebny do uruchamiania aplikacji Gambas.
 
 %package doc
 Summary:	Documentation for Gambas language
@@ -62,8 +62,8 @@ Gambas to wolnodostępne środowisko programistyczne oparte na
 interpreterze Basica z rozszerzeniami obiektowymi, podobnym do Visual
 Basica(TM). Przy pomocy Gambasa można szybko projektować graficzne
 interfejsy użytkownika, odwoływać się do baz danych MySQL i
-PostgreSQL, sterować aplikacjami KDE poprzez DCOP, tłumaczyć program
-na wiele języków itd.
+PostgreSQL, sterować aplikacjami KDE poprzez DCOP, tłumaczyć
+program na wiele języków itd.
 
 Ten pakiet zawiera dokumentację dla języka Gambas.
 
@@ -83,8 +83,8 @@ This package includes the complete Gambas Development Environment,
 with the database manager and all necessary components.
 
 %description ide -l pl.UTF-8
-Ten pakiet zawiera kompletne środowisko programistyczne, łącznie
-z menedżerem baz danych i wszystkimi niezbędnymi komponentami.
+Ten pakiet zawiera kompletne środowisko programistyczne, łącznie z
+menedżerem baz danych i wszystkimi niezbędnymi komponentami.
 
 %package examples
 Summary:	The examples for Gambas language
@@ -110,8 +110,8 @@ This component allows you to compress/uncompress data or files with
 the bzip2 and zip algorithms.
 
 %description gb-compress -l pl.UTF-8
-Ten komponent pozwala pakować/rozpakowywać dane lub pliki przy użyciu
-algorytmów bzip2 i zip.
+Ten komponent pozwala pakować/rozpakowywać dane lub pliki przy
+użyciu algorytmów bzip2 i zip.
 
 %package gb-db
 Summary:	The Gambas database component
@@ -187,8 +187,8 @@ This component allows you to evaluate expressions at runtime. It is
 used by the Gambas Eval() function.
 
 %description gb-eval -l pl.UTF-8
-Ten komponent pozwala na obliczanie wyrażeń w programach. Jest używany
-przez funkcję Gambasa Eval().
+Ten komponent pozwala na obliczanie wyrażeń w programach. Jest
+używany przez funkcję Gambasa Eval().
 
 %package gb-net
 Summary:	The Gambas networking component
@@ -215,8 +215,8 @@ This component allows your programs to easily become FTP or HTTP
 clients.
 
 %description gb-net-curl -l pl.UTF-8
-Ten komponent pozwala programom w łatwy sposób stać się klientami FTP
-lub HTTP.
+Ten komponent pozwala programom w łatwy sposób stać się klientami
+FTP lub HTTP.
 
 %package gb-qt
 Summary:	The Gambas Qt GUI component
@@ -228,8 +228,8 @@ Requires:	%{name} = %{version}-%{release}
 This package includes the Gambas Qt GUI component.
 
 %description gb-qt -l pl.UTF-8
-Ten pakiet zawiera komponent graficznego interfejsu użytkownika Qt dla
-Gambasa.
+Ten pakiet zawiera komponent graficznego interfejsu użytkownika Qt
+dla Gambasa.
 
 %package gb-qt-ext
 Summary:	The Gambas extended Qt GUI component
@@ -254,8 +254,8 @@ This component includes a Gambas source code editor with syntax
 highlighting. It is used by the IDE.
 
 %description gb-qt-editor -l pl.UTF-8
-Ten komponent zawiera edytor kodu źródłowego Gambasa z podświetlaniem
-składni. Jest używany przez IDE.
+Ten komponent zawiera edytor kodu źródłowego Gambasa z
+podświetlaniem składni. Jest używany przez IDE.
 
 %package gb-qt-kde
 Summary:	The Gambas KDE component
@@ -297,8 +297,9 @@ This component uses only the sound part of the SDL library. It allows
 you to simultaneously play many sounds and a music stored in a file.
 
 %description gb-sdl -l pl.UTF-8
-Ten komponent używa tylko części dźwiękowej biblioteki SDL. Pozwala na
-jednoczesne odtwarzanie wielu dźwięków i muzyki zapisanej w pliku.
+Ten komponent używa tylko części dźwiękowej biblioteki SDL.
+Pozwala na jednoczesne odtwarzanie wielu dźwięków i muzyki
+zapisanej w pliku.
 
 %package gb-vb
 Summary:	The Gambas Visual Basic(TM) compatibility component
@@ -313,8 +314,8 @@ port some VB projects.
 
 %description gb-vb -l pl.UTF-8
 Ten komponent zawiera trochę funkcji, których celem jest imitowanie
-zachowania funkcji Visual Basica(TM). Należy go używać wyłącznie przy
-próbach sportowania projektów VB.
+zachowania funkcji Visual Basica(TM). Należy go używać wyłącznie
+przy próbach sportowania projektów VB.
 
 %package gb-xml
 Summary:	The Gambas XML components based on the libxml and libxslt libraries
@@ -331,6 +332,8 @@ Te komponenty dostarczają do Gambasa potęgę bibliotek libxml i
 libxslt.
 %endif
 
+Te komponenty dostarczają do Gambasa potęgę bibliotek libxml i
+libxslt.
 %prep
 %setup -q
 
@@ -371,120 +374,123 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/info/gb.list
 
 %{_libdir}/%{name}/gb.compress.bzlib2.so
-%{_libdir}/%{name}/gb.compress.bzlib2.so.0
-%{_libdir}/%{name}/gb.compress.bzlib2.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.compress.bzlib2.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.compress.bzlib2.so.0.0.0
 %{_libdir}/%{name}/gb.compress.so
-%{_libdir}/%{name}/gb.compress.so.0
-%{_libdir}/%{name}/gb.compress.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.compress.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.compress.so.0.0.0
 %{_libdir}/%{name}/gb.compress.zlib.so
-%{_libdir}/%{name}/gb.compress.zlib.so.0
-%{_libdir}/%{name}/gb.compress.zlib.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.compress.zlib.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.compress.zlib.so.0.0.0
 %{_libdir}/%{name}/gb.corba.so
-%{_libdir}/%{name}/gb.corba.so.0
-%{_libdir}/%{name}/gb.corba.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.corba.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.corba.so.0.0.0
 %{_libdir}/%{name}/gb.crypt.so
-%{_libdir}/%{name}/gb.crypt.so.0
-%{_libdir}/%{name}/gb.crypt.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.crypt.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.crypt.so.0.0.0
 %{_libdir}/%{name}/gb.db.firebird.so
-%{_libdir}/%{name}/gb.db.firebird.so.0
-%{_libdir}/%{name}/gb.db.firebird.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.firebird.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.firebird.so.0.0.0
 %{_libdir}/%{name}/gb.db.mysql.so
-%{_libdir}/%{name}/gb.db.mysql.so.0
-%{_libdir}/%{name}/gb.db.mysql.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.mysql.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.mysql.so.0.0.0
 %{_libdir}/%{name}/gb.db.odbc.so
-%{_libdir}/%{name}/gb.db.odbc.so.0
-%{_libdir}/%{name}/gb.db.odbc.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.odbc.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.odbc.so.0.0.0
 %{_libdir}/%{name}/gb.db.postgresql.so
-%{_libdir}/%{name}/gb.db.postgresql.so.0
-%{_libdir}/%{name}/gb.db.postgresql.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.postgresql.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.postgresql.so.0.0.0
 %{_libdir}/%{name}/gb.db.so
-%{_libdir}/%{name}/gb.db.so.0
-%{_libdir}/%{name}/gb.db.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.so.0.0.0
 %{_libdir}/%{name}/gb.db.sqlite2.so
-%{_libdir}/%{name}/gb.db.sqlite2.so.0
-%{_libdir}/%{name}/gb.db.sqlite2.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.sqlite2.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.sqlite2.so.0.0.0
 %{_libdir}/%{name}/gb.db.sqlite3.so
-%{_libdir}/%{name}/gb.db.sqlite3.so.0
-%{_libdir}/%{name}/gb.db.sqlite3.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.sqlite3.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.sqlite3.so.0.0.0
 %{_libdir}/%{name}/gb.debug.so
-%{_libdir}/%{name}/gb.debug.so.0
-%{_libdir}/%{name}/gb.debug.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.debug.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.debug.so.0.0.0
 %{_libdir}/%{name}/gb.desktop.so
-%{_libdir}/%{name}/gb.desktop.so.0
-%{_libdir}/%{name}/gb.desktop.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.desktop.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.desktop.so.0.0.0
 %{_libdir}/%{name}/gb.draw.so
-%{_libdir}/%{name}/gb.draw.so.0
-%{_libdir}/%{name}/gb.draw.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.draw.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.draw.so.0.0.0
 %{_libdir}/%{name}/gb.eval.so
-%{_libdir}/%{name}/gb.eval.so.0
-%{_libdir}/%{name}/gb.eval.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.eval.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.eval.so.0.0.0
 %{_libdir}/%{name}/gb.gtk.ext.so
-%{_libdir}/%{name}/gb.gtk.ext.so.0
-%{_libdir}/%{name}/gb.gtk.ext.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.ext.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.ext.so.0.0.0
 %{_libdir}/%{name}/gb.gtk.so
-%{_libdir}/%{name}/gb.gtk.so.0
-%{_libdir}/%{name}/gb.gtk.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.so.0.0.0
+%{_libdir}/%{name}/gb.gtk.svg.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.svg.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.svg.so.0.0.0
 %{_libdir}/%{name}/gb.gui.so
-%{_libdir}/%{name}/gb.gui.so.0
-%{_libdir}/%{name}/gb.gui.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.gui.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.gui.so.0.0.0
 %{_libdir}/%{name}/gb.image.so
-%{_libdir}/%{name}/gb.image.so.0
-%{_libdir}/%{name}/gb.image.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.image.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.image.so.0.0.0
 %{_libdir}/%{name}/gb.net.curl.so
-%{_libdir}/%{name}/gb.net.curl.so.0
-%{_libdir}/%{name}/gb.net.curl.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.net.curl.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.net.curl.so.0.0.0
 %{_libdir}/%{name}/gb.net.smtp.so
-%{_libdir}/%{name}/gb.net.smtp.so.0
-%{_libdir}/%{name}/gb.net.smtp.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.net.smtp.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.net.smtp.so.0.0.0
 %{_libdir}/%{name}/gb.net.so
-%{_libdir}/%{name}/gb.net.so.0
-%{_libdir}/%{name}/gb.net.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.net.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.net.so.0.0.0
 %{_libdir}/%{name}/gb.opengl.so
-%{_libdir}/%{name}/gb.opengl.so.0
-%{_libdir}/%{name}/gb.opengl.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.opengl.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.opengl.so.0.0.0
 %{_libdir}/%{name}/gb.option.so
-%{_libdir}/%{name}/gb.option.so.0
-%{_libdir}/%{name}/gb.option.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.option.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.option.so.0.0.0
 %{_libdir}/%{name}/gb.pcre.so
-%{_libdir}/%{name}/gb.pcre.so.0
-%{_libdir}/%{name}/gb.pcre.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.pcre.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.pcre.so.0.0.0
 %{_libdir}/%{name}/gb.pdf.so
-%{_libdir}/%{name}/gb.pdf.so.0
-%{_libdir}/%{name}/gb.pdf.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.pdf.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.pdf.so.0.0.0
 %{_libdir}/%{name}/gb.qt.ext.so
-%{_libdir}/%{name}/gb.qt.ext.so.0
-%{_libdir}/%{name}/gb.qt.ext.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.ext.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.ext.so.0.0.0
 %{_libdir}/%{name}/gb.qt.kde.html.so
-%{_libdir}/%{name}/gb.qt.kde.html.so.0
-%{_libdir}/%{name}/gb.qt.kde.html.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.kde.html.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.kde.html.so.0.0.0
 %{_libdir}/%{name}/gb.qt.kde.so
-%{_libdir}/%{name}/gb.qt.kde.so.0
-%{_libdir}/%{name}/gb.qt.kde.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.kde.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.kde.so.0.0.0
 %{_libdir}/%{name}/gb.qt.opengl.so
-%{_libdir}/%{name}/gb.qt.opengl.so.0
-%{_libdir}/%{name}/gb.qt.opengl.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.opengl.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.opengl.so.0.0.0
 %{_libdir}/%{name}/gb.qt.so
-%{_libdir}/%{name}/gb.qt.so.0
-%{_libdir}/%{name}/gb.qt.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.so.0.0.0
 %{_libdir}/%{name}/gb.sdl.so
-%{_libdir}/%{name}/gb.sdl.so.0
-%{_libdir}/%{name}/gb.sdl.so.0.0.0
-%{_libdir}/%{name}/gb.sdl.sound.component
+%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.sound.component
 %{_libdir}/%{name}/gb.sdl.sound.so
-%{_libdir}/%{name}/gb.sdl.sound.so.0
-%{_libdir}/%{name}/gb.sdl.sound.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.sound.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.sound.so.0.0.0
 %{_libdir}/%{name}/gb.v4l.so
-%{_libdir}/%{name}/gb.v4l.so.0
-%{_libdir}/%{name}/gb.v4l.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.v4l.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.v4l.so.0.0.0
 %{_libdir}/%{name}/gb.vb.so
-%{_libdir}/%{name}/gb.vb.so.0
-%{_libdir}/%{name}/gb.vb.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.vb.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.vb.so.0.0.0
 %{_libdir}/%{name}/gb.xml.so
-%{_libdir}/%{name}/gb.xml.so.0
-%{_libdir}/%{name}/gb.xml.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.xml.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.xml.so.0.0.0
 %{_libdir}/%{name}/gb.xml.xslt.so
-%{_libdir}/%{name}/gb.xml.xslt.so.0
-%{_libdir}/%{name}/gb.xml.xslt.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.xml.xslt.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.xml.xslt.so.0.0.0
 
 %{_libdir}/%{name}/gb.chart.component
 %{_libdir}/%{name}/gb.chart.gambas
@@ -507,6 +513,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}/gb.gtk.component
 %{_libdir}/%{name}/gb.gtk.ext.component
 %{_libdir}/%{name}/gb.gtk.gambas
+%{_libdir}/%{name}/gb.gtk.svg.component
 %{_libdir}/%{name}/gb.gui.component
 %{_libdir}/%{name}/gb.image.component
 %{_libdir}/%{name}/gb.info.component
@@ -530,8 +537,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}/gb.settings.component
 %{_libdir}/%{name}/gb.settings.gambas
 %{_libdir}/%{name}/gb.so
-%{_libdir}/%{name}/gb.so.0
-%{_libdir}/%{name}/gb.so.0.0.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.so.0
+%attr(755,root,root) %{_libdir}/%{name}/gb.so.0.0.0
 %{_libdir}/%{name}/gb.v4l.component
 %{_libdir}/%{name}/gb.vb.component
 %{_libdir}/%{name}/gb.web.component
@@ -568,6 +575,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/info/gb.gtk.ext.list
 %{_datadir}/%{name}/info/gb.gtk.info
 %{_datadir}/%{name}/info/gb.gtk.list
+%{_datadir}/%{name}/info/gb.gtk.svg.info
+%{_datadir}/%{name}/info/gb.gtk.svg.list
 %{_datadir}/%{name}/info/gb.gui.info
 %{_datadir}/%{name}/info/gb.gui.list
 %{_datadir}/%{name}/info/gb.image.info
