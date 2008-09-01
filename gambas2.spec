@@ -1,13 +1,14 @@
 Summary:	Gambas - a free VB-like language
 Summary(pl.UTF-8):	Gambas - wolnodostępny język podobny do VB
 Name:		gambas2
-Version:	2.8.1
+Version:	2.8.2
 Release:	0.1
 License:	GPL v2
 Group:		Development/Languages
 Source0:	http://dl.sourceforge.net/gambas/%{name}-%{version}.tar.bz2
-# Source0-md5:	94898663d4b8c093dcb432d3cfa2e777
+# Source0-md5:	9f0d1c450b22580eccf3a0e3619a9d7c
 Source1:	%{name}.desktop
+Patch0:		%{name}-avoid-version.patch
 URL:		http://gambas.sourceforge.net/
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	bzip2-devel
@@ -18,6 +19,7 @@ BuildRequires:	libxml2-devel
 BuildRequires:	libxslt-devel
 BuildRequires:	mysql-devel
 BuildRequires:	omniORB-devel >= 4
+BuildRequires:	poppler-devel	
 BuildRequires:	postgresql-backend-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	sqlite-devel
@@ -335,8 +337,24 @@ libxslt z poziomu Gambasa.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+###runauto () {
+###set -x
+###%{__libtoolize}
+###%{__aclocal}
+###%{__autoconf}
+###%{__autoheader}
+###%{__automake}
+###}
+###
+###TOPDIR=$(pwd)
+###for d in $(find . -name configure.ac ) ; do
+###	echo $d | grep -vq TEMPLATE && cd $(dirname $d)
+###	runauto
+###	cd $TOPDIR
+###done
 ./reconf-all
 %configure
 %{__make}
@@ -370,47 +388,46 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/%{name}/info
 %{_datadir}/%{name}/info/gb.info
 %{_datadir}/%{name}/info/gb.list
-# '*' because of missing -avoid-version
-%attr(755,root,root) %{_libdir}/%{name}/gb.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.compress.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.compress.bzlib2.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.compress.zlib.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.corba.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.crypt.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.firebird.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.mysql.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.odbc.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.postgresql.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.sqlite2.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.db.sqlite3.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.debug.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.desktop.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.draw.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.eval.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.ext.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.svg.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.gui.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.image.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.net.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.net.curl.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.net.smtp.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.opengl.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.option.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.pcre.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.pdf.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.qt.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.qt.ext.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.qt.kde.html.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.qt.kde.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.qt.opengl.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.sound.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.v4l.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.vb.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.xml.so*
-%attr(755,root,root) %{_libdir}/%{name}/gb.xml.xslt.so*
+%attr(755,root,root) %{_libdir}/%{name}/gb.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.compress.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.compress.bzlib2.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.compress.zlib.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.corba.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.crypt.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.so
+#%%attr(755,root,root) %{_libdir}/%{name}/gb.db.firebird.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.mysql.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.odbc.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.postgresql.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.sqlite2.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.sqlite3.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.debug.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.desktop.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.draw.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.eval.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.ext.so
+#%%attr(755,root,root) %{_libdir}/%{name}/gb.gtk.svg.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.gui.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.image.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.net.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.net.curl.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.net.smtp.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.opengl.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.option.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.pcre.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.pdf.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.ext.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.kde.html.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.kde.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.qt.opengl.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.sdl.sound.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.v4l.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.vb.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.xml.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.xml.xslt.so
 
 %{_libdir}/%{name}/gb.component
 %{_libdir}/%{name}/gb.chart.component
@@ -434,7 +451,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}/gb.gtk.component
 %{_libdir}/%{name}/gb.gtk.ext.component
 %{_libdir}/%{name}/gb.gtk.gambas
-%{_libdir}/%{name}/gb.gtk.svg.component
+#%%{_libdir}/%{name}/gb.gtk.svg.component
 %{_libdir}/%{name}/gb.gui.component
 %{_libdir}/%{name}/gb.image.component
 %{_libdir}/%{name}/gb.info.component
@@ -494,8 +511,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/info/gb.gtk.ext.list
 %{_datadir}/%{name}/info/gb.gtk.info
 %{_datadir}/%{name}/info/gb.gtk.list
-%{_datadir}/%{name}/info/gb.gtk.svg.info
-%{_datadir}/%{name}/info/gb.gtk.svg.list
+#%%{_datadir}/%{name}/info/gb.gtk.svg.info
+#%%{_datadir}/%{name}/info/gb.gtk.svg.list
 %{_datadir}/%{name}/info/gb.gui.info
 %{_datadir}/%{name}/info/gb.gui.list
 %{_datadir}/%{name}/info/gb.image.info
