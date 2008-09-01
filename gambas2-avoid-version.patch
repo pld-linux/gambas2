@@ -1,0 +1,501 @@
+diff -Nur o.gambas2-2.8.2/TEMPLATE/template/src/Makefile.am n.gambas2-2.8.2/TEMPLATE/template/src/Makefile.am
+--- o.gambas2-2.8.2/TEMPLATE/template/src/Makefile.am	2008-08-30 09:32:46.000000000 +0200
++++ n.gambas2-2.8.2/TEMPLATE/template/src/Makefile.am	2008-09-01 19:28:33.421477772 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = __COMPONENT.la
+ 
+ __COMPONENT_UNDERSCORE##_la_LIBADD = #@#__UNAME##_LIB@
+-__COMPONENT_UNDERSCORE##_la_LDFLAGS = -module @LD_FLAGS@
++__COMPONENT_UNDERSCORE##_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ __COMPONENT_UNDERSCORE##_la_SOURCES = __SOURCES
+ 
+diff -Nur o.gambas2-2.8.2/gb.compress.bzlib2/src/Makefile.am n.gambas2-2.8.2/gb.compress.bzlib2/src/Makefile.am
+--- o.gambas2-2.8.2/gb.compress.bzlib2/src/Makefile.am	2008-08-30 09:31:22.000000000 +0200
++++ n.gambas2-2.8.2/gb.compress.bzlib2/src/Makefile.am	2008-09-01 19:28:33.411671310 +0200
+@@ -3,6 +3,6 @@
+ gblib_LTLIBRARIES = gb.compress.bzlib2.la
+ 
+ gb_compress_bzlib2_la_LIBADD = @BZLIB2_LIB@
+-gb_compress_bzlib2_la_LDFLAGS = -module @LD_FLAGS@
++gb_compress_bzlib2_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_compress_bzlib2_la_SOURCES = main.h main.c
+diff -Nur o.gambas2-2.8.2/gb.compress.zlib/src/Makefile.am n.gambas2-2.8.2/gb.compress.zlib/src/Makefile.am
+--- o.gambas2-2.8.2/gb.compress.zlib/src/Makefile.am	2008-08-30 09:31:51.000000000 +0200
++++ n.gambas2-2.8.2/gb.compress.zlib/src/Makefile.am	2008-09-01 19:28:33.421477772 +0200
+@@ -3,6 +3,6 @@
+ gblib_LTLIBRARIES = gb.compress.zlib.la
+ 
+ gb_compress_zlib_la_LIBADD = @ZLIB_LIB@
+-gb_compress_zlib_la_LDFLAGS = -module @LD_FLAGS@
++gb_compress_zlib_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_compress_zlib_la_SOURCES = main.h main.c
+diff -Nur o.gambas2-2.8.2/gb.corba/src/Makefile.am n.gambas2-2.8.2/gb.corba/src/Makefile.am
+--- o.gambas2-2.8.2/gb.corba/src/Makefile.am	2008-08-30 09:32:52.000000000 +0200
++++ n.gambas2-2.8.2/gb.corba/src/Makefile.am	2008-09-01 19:28:33.353963507 +0200
+@@ -6,6 +6,6 @@
+ gblib_LTLIBRARIES = gb.corba.la
+ 
+ gb_corba_la_LIBADD = @CORBA_LIB@
+-gb_corba_la_LDFLAGS = -module @LD_FLAGS@
++gb_corba_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_corba_la_SOURCES = main.cpp main.h CCorbaApplication.cpp CCorbaApplication.h
+diff -Nur o.gambas2-2.8.2/gb.crypt/src/Makefile.am n.gambas2-2.8.2/gb.crypt/src/Makefile.am
+--- o.gambas2-2.8.2/gb.crypt/src/Makefile.am	2008-08-30 09:31:14.000000000 +0200
++++ n.gambas2-2.8.2/gb.crypt/src/Makefile.am	2008-09-01 19:28:33.353963507 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.crypt.la
+ 
+ gb_crypt_la_LIBADD = @CRYPT_LIB@
+-gb_crypt_la_LDFLAGS = -module @LD_FLAGS@
++gb_crypt_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_crypt_la_SOURCES = \
+  main.h main.c \
+diff -Nur o.gambas2-2.8.2/gb.db.firebird/src/Makefile.am n.gambas2-2.8.2/gb.db.firebird/src/Makefile.am
+--- o.gambas2-2.8.2/gb.db.firebird/src/Makefile.am	2008-08-30 09:31:21.000000000 +0200
++++ n.gambas2-2.8.2/gb.db.firebird/src/Makefile.am	2008-09-01 19:28:33.411671310 +0200
+@@ -5,7 +5,7 @@
+ gblib_LTLIBRARIES = gb.db.firebird.la
+ 
+ gb_db_firebird_la_LIBADD = @FIREBIRD_LIB@
+-gb_db_firebird_la_LDFLAGS = -module @LD_FLAGS@
++gb_db_firebird_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_db_firebird_la_CXXFLAGS = $(AM_CXXFLAGS) -fexceptions
+ 
+diff -Nur o.gambas2-2.8.2/gb.db.mysql/src/Makefile.am n.gambas2-2.8.2/gb.db.mysql/src/Makefile.am
+--- o.gambas2-2.8.2/gb.db.mysql/src/Makefile.am	2008-08-30 09:31:50.000000000 +0200
++++ n.gambas2-2.8.2/gb.db.mysql/src/Makefile.am	2008-09-01 19:28:33.418337652 +0200
+@@ -3,7 +3,7 @@
+ gblib_LTLIBRARIES = gb.db.mysql.la
+ 
+ gb_db_mysql_la_LIBADD = @MYSQL_LIB@
+-gb_db_mysql_la_LDFLAGS = -module @LD_FLAGS@
++gb_db_mysql_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_db_mysql_la_SOURCES = \
+  main.h main.c
+diff -Nur o.gambas2-2.8.2/gb.db.odbc/src/Makefile.am n.gambas2-2.8.2/gb.db.odbc/src/Makefile.am
+--- o.gambas2-2.8.2/gb.db.odbc/src/Makefile.am	2008-08-30 09:31:10.000000000 +0200
++++ n.gambas2-2.8.2/gb.db.odbc/src/Makefile.am	2008-09-01 19:28:33.465004537 +0200
+@@ -3,7 +3,7 @@
+ gblib_LTLIBRARIES = gb.db.odbc.la
+ 
+ gb_db_odbc_la_LIBADD = @ODBC_LIB@
+-gb_db_odbc_la_LDFLAGS = -module @LD_FLAGS@
++gb_db_odbc_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_db_odbc_la_SOURCES = \
+   main.h main.c
+diff -Nur o.gambas2-2.8.2/gb.db.postgresql/src/Makefile.am n.gambas2-2.8.2/gb.db.postgresql/src/Makefile.am
+--- o.gambas2-2.8.2/gb.db.postgresql/src/Makefile.am	2008-08-30 09:31:38.000000000 +0200
++++ n.gambas2-2.8.2/gb.db.postgresql/src/Makefile.am	2008-09-01 19:28:33.357505124 +0200
+@@ -3,7 +3,7 @@
+ gblib_LTLIBRARIES = gb.db.postgresql.la
+ 
+ gb_db_postgresql_la_LIBADD = @POSTGRESQL_LIB@
+-gb_db_postgresql_la_LDFLAGS = -module @LD_FLAGS@
++gb_db_postgresql_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_db_postgresql_la_SOURCES = \
+   main.h main.c
+diff -Nur o.gambas2-2.8.2/gb.db.sqlite2/src/Makefile.am n.gambas2-2.8.2/gb.db.sqlite2/src/Makefile.am
+--- o.gambas2-2.8.2/gb.db.sqlite2/src/Makefile.am	2008-08-30 09:31:14.000000000 +0200
++++ n.gambas2-2.8.2/gb.db.sqlite2/src/Makefile.am	2008-09-01 19:28:33.353963507 +0200
+@@ -3,7 +3,7 @@
+ gblib_LTLIBRARIES = gb.db.sqlite2.la
+ 
+ gb_db_sqlite2_la_LIBADD = @SQLITE2_LIB@
+-gb_db_sqlite2_la_LDFLAGS = -module @LD_FLAGS@
++gb_db_sqlite2_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_db_sqlite2_la_SOURCES = \
+  main.h main.cpp dataset.h dataset.cpp qry_dat.cpp qry_dat.h sqlitedataset.h \
+diff -Nur o.gambas2-2.8.2/gb.db.sqlite3/src/Makefile.am n.gambas2-2.8.2/gb.db.sqlite3/src/Makefile.am
+--- o.gambas2-2.8.2/gb.db.sqlite3/src/Makefile.am	2008-08-30 09:31:16.000000000 +0200
++++ n.gambas2-2.8.2/gb.db.sqlite3/src/Makefile.am	2008-09-01 19:28:33.357505124 +0200
+@@ -3,7 +3,7 @@
+ gblib_LTLIBRARIES = gb.db.sqlite3.la
+ 
+ gb_db_sqlite3_la_LIBADD = @SQLITE3_LIB@
+-gb_db_sqlite3_la_LDFLAGS = -module @LD_FLAGS@
++gb_db_sqlite3_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_db_sqlite3_la_SOURCES = \
+  main.h main.cpp dataset.h dataset.cpp qry_dat.cpp qry_dat.h sqlitedataset.h \
+diff -Nur o.gambas2-2.8.2/gb.desktop/src/Makefile.am n.gambas2-2.8.2/gb.desktop/src/Makefile.am
+--- o.gambas2-2.8.2/gb.desktop/src/Makefile.am	2008-08-30 09:32:45.000000000 +0200
++++ n.gambas2-2.8.2/gb.desktop/src/Makefile.am	2008-09-01 19:28:33.300837798 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.desktop.la
+ 
+ gb_desktop_la_LIBADD = @DESKTOP_LIB@
+-gb_desktop_la_LDFLAGS = -module @LD_FLAGS@
++gb_desktop_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_desktop_la_SOURCES = \
+  main.c main.h \
+diff -Nur o.gambas2-2.8.2/gb.gtk/src/Makefile.am n.gambas2-2.8.2/gb.gtk/src/Makefile.am
+--- o.gambas2-2.8.2/gb.gtk/src/Makefile.am	2008-08-30 09:31:35.000000000 +0200
++++ n.gambas2-2.8.2/gb.gtk/src/Makefile.am	2008-09-01 19:28:33.367300589 +0200
+@@ -8,7 +8,7 @@
+ gblib_LTLIBRARIES = gb.gtk.la
+ 
+ gb_gtk_la_LIBADD = @GTK_LIB@
+-gb_gtk_la_LDFLAGS = -module @LD_FLAGS@ @GTK_LDFLAGS@
++gb_gtk_la_LDFLAGS = -module -avoid-version @LD_FLAGS@ @GTK_LDFLAGS@
+ 
+ gb_gtk_la_SOURCES = \
+ 	gmemory.h gmemory.cpp gtag.h ggambastag.h gshare.h \
+diff -Nur o.gambas2-2.8.2/gb.gtk/src/ext/Makefile.am n.gambas2-2.8.2/gb.gtk/src/ext/Makefile.am
+--- o.gambas2-2.8.2/gb.gtk/src/ext/Makefile.am	2008-08-30 09:31:32.000000000 +0200
++++ n.gambas2-2.8.2/gb.gtk/src/ext/Makefile.am	2008-09-01 19:28:33.357505124 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.gtk.ext.la
+ 
+ gb_gtk_ext_la_LIBADD = @GTK_LIB@
+-gb_gtk_ext_la_LDFLAGS = -module @LD_FLAGS@ @GTK_LDFLAGS@
++gb_gtk_ext_la_LDFLAGS = -module -avoid-version @LD_FLAGS@ @GTK_LDFLAGS@
+ 
+ gb_gtk_ext_la_SOURCES = \
+  main.h main.cpp \
+diff -Nur o.gambas2-2.8.2/gb.image/src/Makefile.am n.gambas2-2.8.2/gb.image/src/Makefile.am
+--- o.gambas2-2.8.2/gb.image/src/Makefile.am	2008-08-30 09:31:25.000000000 +0200
++++ n.gambas2-2.8.2/gb.image/src/Makefile.am	2008-09-01 19:28:33.353963507 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.image.la
+ 
+ gb_image_la_LIBADD = @IMAGE_LIB@
+-gb_image_la_LDFLAGS = -module @LD_FLAGS@
++gb_image_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ gb_image_la_CXXFLAGS = $(AM_CXXFLAGS) -O2
+ 
+ gb_image_la_SOURCES = main.cpp main.h qt.h \
+diff -Nur o.gambas2-2.8.2/gb.net/src/Makefile.am n.gambas2-2.8.2/gb.net/src/Makefile.am
+--- o.gambas2-2.8.2/gb.net/src/Makefile.am	2008-08-30 09:32:54.000000000 +0200
++++ n.gambas2-2.8.2/gb.net/src/Makefile.am	2008-09-01 19:28:33.367300589 +0200
+@@ -8,7 +8,7 @@
+ gblib_LTLIBRARIES = gb.net.la
+ 
+ gb_net_la_LIBADD = @NET_LIB@
+-gb_net_la_LDFLAGS = -module @LD_FLAGS@
++gb_net_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_net_la_SOURCES = gb_network.h main.h main.c tools.h tools.c CDnsClient.h CDnsClient.c CSocket.h CSocket.c CServerSocket.h CServerSocket.c CUdpSocket.h CUdpSocket.c CSerialPort.h CSerialPort.c CNet.h CNet.c
+ 
+diff -Nur o.gambas2-2.8.2/gb.net.curl/src/Makefile.am n.gambas2-2.8.2/gb.net.curl/src/Makefile.am
+--- o.gambas2-2.8.2/gb.net.curl/src/Makefile.am	2008-08-30 09:31:10.000000000 +0200
++++ n.gambas2-2.8.2/gb.net.curl/src/Makefile.am	2008-09-01 19:28:33.465004537 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.net.curl.la
+ 
+ gb_net_curl_la_LIBADD = @CURL_LIB@
+-gb_net_curl_la_LDFLAGS = -module @LD_FLAGS@ @CURL_LDFLAGS@
++gb_net_curl_la_LDFLAGS = -module -avoid-version @LD_FLAGS@ @CURL_LDFLAGS@
+ 
+ gb_net_curl_la_SOURCES = \
+ 	gbcurl.h gbcurl.c \
+diff -Nur o.gambas2-2.8.2/gb.net.smtp/src/Makefile.am n.gambas2-2.8.2/gb.net.smtp/src/Makefile.am
+--- o.gambas2-2.8.2/gb.net.smtp/src/Makefile.am	2008-08-30 09:31:17.000000000 +0200
++++ n.gambas2-2.8.2/gb.net.smtp/src/Makefile.am	2008-09-01 19:28:33.465004537 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.net.smtp.la
+ 
+ gb_net_smtp_la_LIBADD = @SMTP_LIB@
+-gb_net_smtp_la_LDFLAGS = -module @LD_FLAGS@ @SMTP_LDFLAGS@
++gb_net_smtp_la_LDFLAGS = -module -avoid-version @LD_FLAGS@ @SMTP_LDFLAGS@
+ 
+ gb_net_smtp_la_SOURCES = main.c main.h \
+ libsmtp.h libsmtp_comm.c libsmtp_connection.c libsmtp_data.c libsmtp_error.c \
+diff -Nur o.gambas2-2.8.2/gb.opengl/src/Makefile.am n.gambas2-2.8.2/gb.opengl/src/Makefile.am
+--- o.gambas2-2.8.2/gb.opengl/src/Makefile.am	2008-08-30 09:31:28.000000000 +0200
++++ n.gambas2-2.8.2/gb.opengl/src/Makefile.am	2008-09-01 19:28:33.408337667 +0200
+@@ -5,7 +5,7 @@
+ INCLUDES = @OPENGL_INC@
+ 
+ gb_opengl_la_LIBADD = @OPENGL_LIB@
+-gb_opengl_la_LDFLAGS = -module @LD_FLAGS@
++gb_opengl_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_opengl_la_SOURCES = \
+  main.h main.c gb.gl.h gb.gl.c \
+diff -Nur o.gambas2-2.8.2/gb.pcre/src/Makefile.am n.gambas2-2.8.2/gb.pcre/src/Makefile.am
+--- o.gambas2-2.8.2/gb.pcre/src/Makefile.am	2008-08-30 09:31:49.000000000 +0200
++++ n.gambas2-2.8.2/gb.pcre/src/Makefile.am	2008-09-01 19:28:33.357505124 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.pcre.la
+ 
+ gb_pcre_la_LIBADD = @PCRE_LIB@
+-gb_pcre_la_LDFLAGS = -module @LD_FLAGS@
++gb_pcre_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_pcre_la_SOURCES = \
+  main.h main.c \
+diff -Nur o.gambas2-2.8.2/gb.pdf/src/Makefile.am n.gambas2-2.8.2/gb.pdf/src/Makefile.am
+--- o.gambas2-2.8.2/gb.pdf/src/Makefile.am	2008-08-30 09:31:18.000000000 +0200
++++ n.gambas2-2.8.2/gb.pdf/src/Makefile.am	2008-09-01 19:28:33.367300589 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.pdf.la
+ 
+ gb_pdf_la_LIBADD = @POPPLER_LIB@
+-gb_pdf_la_LDFLAGS = -module @LD_FLAGS@ @POPPLER_LDFLAGS@
++gb_pdf_la_LDFLAGS = -module -avoid-version @LD_FLAGS@ @POPPLER_LDFLAGS@
+ 
+ gb_pdf_la_SOURCES = main.h main.cpp \
+                         CPdfDocument.h CPdfDocument.cpp 
+diff -Nur o.gambas2-2.8.2/gb.qt/src/Makefile.am n.gambas2-2.8.2/gb.qt/src/Makefile.am
+--- o.gambas2-2.8.2/gb.qt/src/Makefile.am	2008-08-30 09:32:51.000000000 +0200
++++ n.gambas2-2.8.2/gb.qt/src/Makefile.am	2008-09-01 19:28:33.353963507 +0200
+@@ -10,7 +10,7 @@
+ gblib_LTLIBRARIES = gb.qt.la
+ 
+ gb_qt_la_LIBADD = @QT_LIB@
+-gb_qt_la_LDFLAGS = -module @LD_FLAGS@ @QT_LDFLAGS@
++gb_qt_la_LDFLAGS = -module -avoid-version @LD_FLAGS@ @QT_LDFLAGS@
+ gb_qt_la_CXXFLAGS = -DGB_QT_COMPONENT $(AM_CFLAGS)
+ 
+ gb_qt_la_SOURCES = \
+diff -Nur o.gambas2-2.8.2/gb.qt/src/ext/Makefile.am n.gambas2-2.8.2/gb.qt/src/ext/Makefile.am
+--- o.gambas2-2.8.2/gb.qt/src/ext/Makefile.am	2008-08-30 09:32:48.000000000 +0200
++++ n.gambas2-2.8.2/gb.qt/src/ext/Makefile.am	2008-09-01 19:28:33.353963507 +0200
+@@ -7,7 +7,7 @@
+ gblib_LTLIBRARIES = gb.qt.ext.la
+ 
+ gb_qt_ext_la_LIBADD = @QT_LIB@
+-gb_qt_ext_la_LDFLAGS = -module @LD_FLAGS@ @QT_LDFLAGS@
++gb_qt_ext_la_LDFLAGS = -module -avoid-version @LD_FLAGS@ @QT_LDFLAGS@
+ 
+ gb_qt_ext_la_SOURCES = \
+  main.h main.cpp \
+diff -Nur o.gambas2-2.8.2/gb.qt/src/opengl/Makefile.am n.gambas2-2.8.2/gb.qt/src/opengl/Makefile.am
+--- o.gambas2-2.8.2/gb.qt/src/opengl/Makefile.am	2008-08-30 09:32:49.000000000 +0200
++++ n.gambas2-2.8.2/gb.qt/src/opengl/Makefile.am	2008-09-01 19:28:33.353963507 +0200
+@@ -7,7 +7,7 @@
+ gblib_LTLIBRARIES = gb.qt.opengl.la
+ 
+ gb_qt_opengl_la_LIBADD = @QT_LIB@ @QTOPENGL_LIB@
+-gb_qt_opengl_la_LDFLAGS = -module @LD_FLAGS@ @QT_LDFLAGS@ @QTOPENGL_LDFLAGS@
++gb_qt_opengl_la_LDFLAGS = -module -avoid-version @LD_FLAGS@ @QT_LDFLAGS@ @QTOPENGL_LDFLAGS@
+ 
+ gb_qt_opengl_la_SOURCES = \
+  main.h main.cpp \
+diff -Nur o.gambas2-2.8.2/gb.qt.kde/src/Makefile.am n.gambas2-2.8.2/gb.qt.kde/src/Makefile.am
+--- o.gambas2-2.8.2/gb.qt.kde/src/Makefile.am	2008-08-30 09:31:37.000000000 +0200
++++ n.gambas2-2.8.2/gb.qt.kde/src/Makefile.am	2008-09-01 19:28:33.411671310 +0200
+@@ -9,7 +9,7 @@
+ gblib_LTLIBRARIES = gb.qt.kde.la
+ 
+ gb_qt_kde_la_LIBADD = @QT_LIB@ @KDE_LIB@
+-gb_qt_kde_la_LDFLAGS = -module @LD_FLAGS@
++gb_qt_kde_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_qt_kde_la_SOURCES = \
+  main.h main_moc.cpp main.cpp \
+diff -Nur o.gambas2-2.8.2/gb.qt.kde/src/html/Makefile.am n.gambas2-2.8.2/gb.qt.kde/src/html/Makefile.am
+--- o.gambas2-2.8.2/gb.qt.kde/src/html/Makefile.am	2008-08-30 09:31:36.000000000 +0200
++++ n.gambas2-2.8.2/gb.qt.kde/src/html/Makefile.am	2008-09-01 19:28:33.411671310 +0200
+@@ -7,7 +7,7 @@
+ gblib_LTLIBRARIES = gb.qt.kde.html.la
+ 
+ gb_qt_kde_html_la_LIBADD = @QT_LIB@ @KDE_LIB@ -lkhtml -lkjs
+-gb_qt_kde_html_la_LDFLAGS = -module @LD_FLAGS@
++gb_qt_kde_html_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_qt_kde_html_la_SOURCES = \
+  main.h main_moc.cpp main.cpp \
+diff -Nur o.gambas2-2.8.2/gb.qte/src/Makefile.am n.gambas2-2.8.2/gb.qte/src/Makefile.am
+--- o.gambas2-2.8.2/gb.qte/src/Makefile.am	2008-08-30 09:31:48.000000000 +0200
++++ n.gambas2-2.8.2/gb.qte/src/Makefile.am	2008-09-01 19:28:33.408337667 +0200
+@@ -9,7 +9,7 @@
+ gblib_LTLIBRARIES = gb.qte.la
+ 
+ gb_qte_la_LIBADD = @QTE_LIB@
+-gb_qte_la_LDFLAGS = -module @LD_FLAGS@
++gb_qte_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ gb_qte_la_CXXFLAGS = -fno-rtti -DQWS -DGB_QT_COMPONENT $(AM_CXXFLAGS)
+ 
+ gb_qte_la_SOURCES = \
+diff -Nur o.gambas2-2.8.2/gb.qte/src/ext/Makefile.am n.gambas2-2.8.2/gb.qte/src/ext/Makefile.am
+--- o.gambas2-2.8.2/gb.qte/src/ext/Makefile.am	2008-08-30 09:31:39.000000000 +0200
++++ n.gambas2-2.8.2/gb.qte/src/ext/Makefile.am	2008-09-01 19:28:33.408337667 +0200
+@@ -7,7 +7,7 @@
+ gblib_LTLIBRARIES = gb.qte.ext.la
+ 
+ gb_qte_ext_la_LIBADD = @QTE_LIB@
+-gb_qte_ext_la_LDFLAGS = -module @LD_FLAGS@
++gb_qte_ext_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ gb_qte_ext_la_CXXFLAGS = -fno-rtti -DQWS -DGB_QT_COMPONENT $(AM_CXXFLAGS)
+ 
+ gb_qte_ext_la_SOURCES = \
+diff -Nur o.gambas2-2.8.2/gb.sdl/src/Makefile.am n.gambas2-2.8.2/gb.sdl/src/Makefile.am
+--- o.gambas2-2.8.2/gb.sdl/src/Makefile.am	2008-08-30 09:31:24.000000000 +0200
++++ n.gambas2-2.8.2/gb.sdl/src/Makefile.am	2008-09-01 19:28:33.408337667 +0200
+@@ -5,7 +5,7 @@
+ INCLUDES = @SDL_INC@
+ 
+ gb_sdl_la_LIBADD = @SDL_LIB@
+-gb_sdl_la_LDFLAGS = -module @LD_FLAGS@
++gb_sdl_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_sdl_la_SOURCES = \
+  SDL_h.h \
+diff -Nur o.gambas2-2.8.2/gb.sdl.sound/src/Makefile.am n.gambas2-2.8.2/gb.sdl.sound/src/Makefile.am
+--- o.gambas2-2.8.2/gb.sdl.sound/src/Makefile.am	2008-08-30 09:31:19.000000000 +0200
++++ n.gambas2-2.8.2/gb.sdl.sound/src/Makefile.am	2008-09-01 19:28:33.357505124 +0200
+@@ -5,7 +5,7 @@
+ INCLUDES = @SDL_SOUND_INC@
+ 
+ gb_sdl_sound_la_LIBADD = @SDL_SOUND_LIB@
+-gb_sdl_sound_la_LDFLAGS = -module @LD_FLAGS@
++gb_sdl_sound_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_sdl_sound_la_SOURCES = \
+  main.h main.c \
+diff -Nur o.gambas2-2.8.2/gb.v4l/src/Makefile.am n.gambas2-2.8.2/gb.v4l/src/Makefile.am
+--- o.gambas2-2.8.2/gb.v4l/src/Makefile.am	2008-08-30 09:32:18.000000000 +0200
++++ n.gambas2-2.8.2/gb.v4l/src/Makefile.am	2008-09-01 19:28:33.370629811 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.v4l.la
+ 
+ gb_v4l_la_LIBADD = @V4L_LIB@
+-gb_v4l_la_LDFLAGS = -module @LD_FLAGS@
++gb_v4l_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_v4l_la_SOURCES = main.h main.c CWebcam.h CWebcam.c
+ 
+diff -Nur o.gambas2-2.8.2/gb.xml/src/Makefile.am n.gambas2-2.8.2/gb.xml/src/Makefile.am
+--- o.gambas2-2.8.2/gb.xml/src/Makefile.am	2008-08-30 09:31:12.000000000 +0200
++++ n.gambas2-2.8.2/gb.xml/src/Makefile.am	2008-09-01 19:28:33.408337667 +0200
+@@ -10,7 +10,7 @@
+ gblib_LTLIBRARIES = gb.xml.la
+ 
+ gb_xml_la_LIBADD = @XML_LIB@
+-gb_xml_la_LDFLAGS = -module @LD_FLAGS@ @XML_LDFLAGS@
++gb_xml_la_LDFLAGS = -module -avoid-version @LD_FLAGS@ @XML_LDFLAGS@
+ 
+ gb_xml_la_SOURCES = main.h main.c CXMLNode.h CXMLNode.c CXMLReader.h CXMLReader.c \
+                     CXMLWriter.h CXMLWriter.c CXMLDocument.h CXMLDocument.c 
+diff -Nur o.gambas2-2.8.2/gb.xml/src/xslt/Makefile.am n.gambas2-2.8.2/gb.xml/src/xslt/Makefile.am
+--- o.gambas2-2.8.2/gb.xml/src/xslt/Makefile.am	2008-08-30 09:31:12.000000000 +0200
++++ n.gambas2-2.8.2/gb.xml/src/xslt/Makefile.am	2008-09-01 19:28:33.408337667 +0200
+@@ -8,7 +8,7 @@
+ gblib_LTLIBRARIES = gb.xml.xslt.la
+ 
+ gb_xml_xslt_la_LIBADD = @XSLT_LIB@
+-gb_xml_xslt_la_LDFLAGS = -module @LD_FLAGS@ @XSLT_LDFLAGS@
++gb_xml_xslt_la_LDFLAGS = -module -avoid-version @LD_FLAGS@ @XSLT_LDFLAGS@
+ 
+ gb_xml_xslt_la_SOURCES = main.h main.c CXSLT.h CXSLT.c 
+ 
+diff -Nur o.gambas2-2.8.2/main/gbx/Makefile.am n.gambas2-2.8.2/main/gbx/Makefile.am
+--- o.gambas2-2.8.2/main/gbx/Makefile.am	2008-08-30 09:31:55.000000000 +0200
++++ n.gambas2-2.8.2/main/gbx/Makefile.am	2008-09-01 19:28:32.897504438 +0200
+@@ -10,7 +10,7 @@
+ libgbxopt_la_CFLAGS= -DGAMBAS_PATH="\"$(bindir)\"" $(AM_CFLAGS_OPT)
+ 
+ gb_la_LIBADD = @MATH_LIB@ @INTL_LIB@ @CONV_LIB@ @GETTEXT_LIB@ @DL_LIB@ @GBX_THREAD_LIB@ @TTY_LIB@ @FFI_LIB@
+-gb_la_LDFLAGS = -module @LD_FLAGS@ @FFI_LDFLAGS@
++gb_la_LDFLAGS = -module -avoid-version @LD_FLAGS@ @FFI_LDFLAGS@
+ gb_la_CFLAGS = -DGBX_INFO $(AM_CFLAGS) -O0
+ 
+ gbx2_SOURCES = \
+diff -Nur o.gambas2-2.8.2/main/lib/compress/Makefile.am n.gambas2-2.8.2/main/lib/compress/Makefile.am
+--- o.gambas2-2.8.2/main/lib/compress/Makefile.am	2008-08-30 09:32:02.000000000 +0200
++++ n.gambas2-2.8.2/main/lib/compress/Makefile.am	2008-09-01 19:28:33.197504398 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.compress.la
+ 
+ gb_compress_la_LIBADD = 
+-gb_compress_la_LDFLAGS = -module @LD_FLAGS@
++gb_compress_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_compress_la_SOURCES = gb.compress.h main.h main.c CCompress.h CCompress.c CUncompress.h CUncompress.c
+ 
+diff -Nur o.gambas2-2.8.2/main/lib/db/Makefile.am n.gambas2-2.8.2/main/lib/db/Makefile.am
+--- o.gambas2-2.8.2/main/lib/db/Makefile.am	2008-08-30 09:32:00.000000000 +0200
++++ n.gambas2-2.8.2/main/lib/db/Makefile.am	2008-09-01 19:28:32.927296764 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.db.la
+ 
+ gb_db_la_LIBADD = @C_LIB@
+-gb_db_la_LDFLAGS = -module @LD_FLAGS@
++gb_db_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_db_la_SOURCES = \
+  gb.db.h gb.db.proto.h gb_barray.h \
+diff -Nur o.gambas2-2.8.2/main/lib/debug/Makefile.am n.gambas2-2.8.2/main/lib/debug/Makefile.am
+--- o.gambas2-2.8.2/main/lib/debug/Makefile.am	2008-08-30 09:32:00.000000000 +0200
++++ n.gambas2-2.8.2/main/lib/debug/Makefile.am	2008-09-01 19:28:33.144171079 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.debug.la
+ 
+ gb_debug_la_LIBADD = @GBX_THREAD_LIB@
+-gb_debug_la_LDFLAGS = -module @LD_FLAGS@
++gb_debug_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_debug_la_SOURCES = \
+  CDebug.h CDebug.c \
+diff -Nur o.gambas2-2.8.2/main/lib/draw/Makefile.am n.gambas2-2.8.2/main/lib/draw/Makefile.am
+--- o.gambas2-2.8.2/main/lib/draw/Makefile.am	2008-08-30 09:32:03.000000000 +0200
++++ n.gambas2-2.8.2/main/lib/draw/Makefile.am	2008-09-01 19:28:32.927296764 +0200
+@@ -3,7 +3,7 @@
+ gblib_LTLIBRARIES = gb.draw.la
+ 
+ gb_draw_la_LIBADD = @MATH_LIB@
+-gb_draw_la_LDFLAGS = -module @LD_FLAGS@ 
++gb_draw_la_LDFLAGS = -module -avoid-version @LD_FLAGS@ 
+ 
+ gb_draw_la_SOURCES = \
+  gb.draw.h \
+diff -Nur o.gambas2-2.8.2/main/lib/eval/Makefile.am n.gambas2-2.8.2/main/lib/eval/Makefile.am
+--- o.gambas2-2.8.2/main/lib/eval/Makefile.am	2008-08-30 09:32:01.000000000 +0200
++++ n.gambas2-2.8.2/main/lib/eval/Makefile.am	2008-09-01 19:28:33.040837732 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.eval.la
+ 
+ gb_eval_la_LIBADD = 
+-gb_eval_la_LDFLAGS = -module @LD_FLAGS@
++gb_eval_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_eval_la_SOURCES = \
+  gb_alloc_override.h \
+diff -Nur o.gambas2-2.8.2/main/lib/gui/Makefile.am n.gambas2-2.8.2/main/lib/gui/Makefile.am
+--- o.gambas2-2.8.2/main/lib/gui/Makefile.am	2008-08-30 09:31:59.000000000 +0200
++++ n.gambas2-2.8.2/main/lib/gui/Makefile.am	2008-09-01 19:28:32.927296764 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.gui.la
+ 
+ gb_gui_la_LIBADD = 
+-gb_gui_la_LDFLAGS = -module @LD_FLAGS@
++gb_gui_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_gui_la_SOURCES = \
+  main.h main.c
+diff -Nur o.gambas2-2.8.2/main/lib/option/Makefile.am n.gambas2-2.8.2/main/lib/option/Makefile.am
+--- o.gambas2-2.8.2/main/lib/option/Makefile.am	2008-08-30 09:32:02.000000000 +0200
++++ n.gambas2-2.8.2/main/lib/option/Makefile.am	2008-09-01 19:28:33.260629960 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.option.la
+ 
+ gb_option_la_LIBADD = 
+-gb_option_la_LDFLAGS = -module @LD_FLAGS@
++gb_option_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_option_la_SOURCES = \
+  main.h main.c \
+diff -Nur o.gambas2-2.8.2/main/lib/vb/Makefile.am n.gambas2-2.8.2/main/lib/vb/Makefile.am
+--- o.gambas2-2.8.2/main/lib/vb/Makefile.am	2008-08-30 09:32:02.000000000 +0200
++++ n.gambas2-2.8.2/main/lib/vb/Makefile.am	2008-09-01 19:28:32.927296764 +0200
+@@ -6,7 +6,7 @@
+ gblib_LTLIBRARIES = gb.vb.la
+ 
+ gb_vb_la_LIBADD = @C_LIB@ @MATH_LIB@
+-gb_vb_la_LDFLAGS = -module @LD_FLAGS@
++gb_vb_la_LDFLAGS = -module -avoid-version @LD_FLAGS@
+ 
+ gb_vb_la_SOURCES = main.h main.c vb.h vb.c vbdate.h vbdate.c
+ 
