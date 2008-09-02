@@ -1,3 +1,32 @@
+# conditional build
+%bcond_without	bzlib2
+%bcond_without	zlib
+%bcond_without	mysql
+%bcond_without	odbc
+%bcond_without	postgresql
+%bcond_without	sqlite2
+%bcond_without	sqlite3
+%bcond_without	firebird
+%bcond_without	gtk
+%bcond_without	gtksvg
+%bcond_without	pdf
+%bcond_without	net
+%bcond_without	curl
+%bcond_without	smtp
+%bcond_without	pcre
+%bcond_without	qt
+%bcond_without	qte
+%bcond_without	kde
+%bcond_without	sdl
+%bcond_without	sdlsound
+%bcond_without	xml
+%bcond_without	v4l
+%bcond_without	crypt
+%bcond_without	opengl
+%bcond_without	corba
+%bcond_without	image
+#bcond_without	desktop
+#
 Summary:	Gambas - a free VB-like language
 Summary(pl.UTF-8):	Gambas - wolnodostępny język podobny do VB
 Name:		gambas2
@@ -10,19 +39,24 @@ Source0:	http://dl.sourceforge.net/gambas/%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
 Patch0:		%{name}-avoid-version.patch
 URL:		http://gambas.sourceforge.net/
-BuildRequires:	SDL_mixer-devel
-BuildRequires:	bzip2-devel
-BuildRequires:	curl-devel
 BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel
-BuildRequires:	libxml2-devel
-BuildRequires:	libxslt-devel
-BuildRequires:	mysql-devel
-BuildRequires:	omniORB-devel >= 4
-BuildRequires:	poppler-devel	
-BuildRequires:	postgresql-backend-devel
-BuildRequires:	postgresql-devel
-BuildRequires:	sqlite-devel
+%{?with_firebird:BuildRequires:	Firebird-devel}
+%{?with_sdl:BuildRequires:	SDL_mixer-devel}
+%{?with_bzip2:BuildRequires:	bzip2-devel}
+%{?with_curl:BuildRequires:	curl-devel}
+%{?with_kde:BuildRequires:	kdelibs-devel}
+%{?with_mysql:BuildRequires:	mysql-devel}
+%{?with_corba:BuildRequires:	omniORB-devel >= 4}
+%{?with_pdf:BuildRequires:	poppler-devel}
+%{?with_postgresql:BuildRequires:	postgresql-backend-devel}
+%{?with_postgresql:BuildRequires:	postgresql-devel}
+%{?with_qt:BuildRequires:	qt-devel}
+%{?with_qte:BuildRequires:	qt-devel}
+%{?with_sqlite2:BuildRequires:	sqlite2-devel}
+%{?with_sqlite:BuildRequires:	sqlite-devel}
+%{?with_xml:BuildRequires:	libxml2-devel}
+%{?with_xls:BuildRequires:	libxslt-devel}
+%{?with_zlib:BuildRequires:	zlib-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -340,23 +374,37 @@ libxslt z poziomu Gambasa.
 %patch0 -p1
 
 %build
-###runauto () {
-###set -x
-###%{__libtoolize}
-###%{__aclocal}
-###%{__autoconf}
-###%{__autoheader}
-###%{__automake}
-###}
-###
-###TOPDIR=$(pwd)
-###for d in $(find . -name configure.ac ) ; do
-###	echo $d | grep -vq TEMPLATE && cd $(dirname $d)
-###	runauto
-###	cd $TOPDIR
-###done
 ./reconf-all
-%configure
+%configure \
+	--enable-bzlib2=%{?with_bzlib2:yes}%{!?with_bzlib2:no} \
+	--enable-zlib=%{?with_zlib:yes}%{!?with_zlib:no} \
+	--enable-mysql=%{?with_mysql:yes}%{!?with_mysql:no} \
+	--enable-odbc=%{?with_odbc:yes}%{!?with_odbc:no} \
+	--enable-postgresql=%{?with_postgresql:yes}%{!?with_postgresql:no} \
+	--enable-sqlite2=%{?with_sqlite2:yes}%{!?with_sqlite2:no} \
+	--enable-sqlite3=%{?with_sqlite3:yes}%{!?with_sqlite3:no} \
+	--enable-firebird=%{?with_firebird:yes}%{!?with_firebird:no} \
+	--enable-gtk=%{?with_gtk:yes}%{!?with_gtk:no} \
+	--enable-gtksvg=%{?with_gtksvg:yes}%{!?with_gtksvg:no} \
+	--enable-pdf=%{?with_pdf:yes}%{!?with_pdf:no} \
+	--enable-net=%{?with_net:yes}%{!?with_net:no} \
+	--enable-curl=%{?with_curl:yes}%{!?with_curl:no} \
+	--enable-smtp=%{?with_smtp:yes}%{!?with_smtp:no} \
+	--enable-pcre=%{?with_pcre:yes}%{!?with_pcre:no} \
+	--enable-qt=%{?with_qt:yes}%{!?with_qt:no} \
+	--enable-qte=%{?with_qte:yes}%{!?with_qte:no} \
+	--enable-kde=%{?with_kde:yes}%{!?with_kde:no} \
+	--enable-sdl=%{?with_sdl:yes}%{!?with_sdl:no} \
+	--enable-sdlsound=%{?with_sdlsound:yes}%{!?with_sdlsound:no} \
+	--enable-xml=%{?with_xml:yes}%{!?with_xml:no} \
+	--enable-v4l=%{?with_v4l:yes}%{!?with_v4l:no} \
+	--enable-crypt=%{?with_crypt:yes}%{!?with_crypt:no} \
+	--enable-opengl=%{?with_opengl:yes}%{!?with_opengl:no} \
+	--enable-corba=%{?with_corba:yes}%{!?with_corba:no} \
+	--enable-image=%{?with_image:yes}%{!?with_image:no} \
+
+#	--enable-desktop=%{?with_desktop:yes}%{!?with_desktop:no} \
+
 %{__make}
 
 %install
@@ -395,7 +443,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/gb.corba.so
 %attr(755,root,root) %{_libdir}/%{name}/gb.crypt.so
 %attr(755,root,root) %{_libdir}/%{name}/gb.db.so
-#%%attr(755,root,root) %{_libdir}/%{name}/gb.db.firebird.so
+%attr(755,root,root) %{_libdir}/%{name}/gb.db.firebird.so
 %attr(755,root,root) %{_libdir}/%{name}/gb.db.mysql.so
 %attr(755,root,root) %{_libdir}/%{name}/gb.db.odbc.so
 %attr(755,root,root) %{_libdir}/%{name}/gb.db.postgresql.so
