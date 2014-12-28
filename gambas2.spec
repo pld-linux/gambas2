@@ -39,7 +39,7 @@ Source0:	http://dl.sourceforge.net/gambas/%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
 Patch0:		%{name}-avoid-version.patch
 URL:		http://gambas.sourceforge.net/
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 %{?with_firebird:BuildRequires:	Firebird-devel}
 %{?with_sdl:BuildRequires:	SDL_mixer-devel}
 %{?with_bzip2:BuildRequires:	bzip2-devel}
