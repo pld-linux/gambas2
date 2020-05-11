@@ -44,7 +44,7 @@ Version:	2.8.2
 Release:	0.1
 License:	GPL v2
 Group:		Development/Languages
-Source0:	http://dl.sourceforge.net/gambas/%{name}-%{version}.tar.bz2
+Source0:	http://downloads.sourceforge.net/gambas/%{name}-%{version}.tar.bz2
 # Source0-md5:	9f0d1c450b22580eccf3a0e3619a9d7c
 Source1:	%{name}.desktop
 Patch0:		%{name}-avoid-version.patch
