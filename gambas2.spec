@@ -1,32 +1,42 @@
-# conditional build
-%bcond_without	bzlib2
-%bcond_without	zlib
-%bcond_without	mysql
-%bcond_without	odbc
-%bcond_without	postgresql
-%bcond_without	sqlite2
-%bcond_without	sqlite3
-%bcond_without	firebird
-%bcond_without	gtk
-%bcond_without	gtksvg
-%bcond_without	pdf
-%bcond_without	net
-%bcond_without	curl
-%bcond_without	smtp
-%bcond_without	pcre
-%bcond_without	qt
-%bcond_without	qte
-%bcond_without	kde
-%bcond_without	sdl
-%bcond_without	sdlsound
-%bcond_without	xml
-%bcond_without	v4l
-%bcond_without	crypt
-%bcond_without	opengl
-%bcond_without	corba
-%bcond_without	image
-#bcond_without	desktop
 #
+# Conditional build:
+%bcond_without	bzip2		# gb.compress.bzlib2 module
+%bcond_without	zlib		# gb.compress.zlib module
+%bcond_without	mysql		# gb.db.mysql module
+%bcond_without	odbc		# gb.db.odbc module
+%bcond_without	pgsql		# gb.db.postgresql module
+%bcond_without	sqlite2		# gb.db.sqlite2 module
+%bcond_without	sqlite3		# gb.db.sqlite3 module
+%bcond_without	firebird	# gb.db.firebird module
+%bcond_without	gtk		# gb.gtk module
+%bcond_without	librsvg		# gb.gtk.svg module (depends on gtk)
+%bcond_without	pdf		# gb.pdf module
+%bcond_without	net		# gb.net module
+%bcond_without	curl		# gb.net.curl module
+%bcond_without	smtp		# gb.net.smtp module
+%bcond_without	pcre		# gb.pcre module
+%bcond_without	qt		# gb.qt module
+%bcond_with	qte		# gb.qte module
+%bcond_without	kde		# gb.qt.kde module
+%bcond_without	sdl		# gb.sdl module
+%bcond_without	sdlsound	# gb.sdl.sound module
+%bcond_without	xml		# gb.xml module
+%bcond_without	v4l		# gb.v4l module
+%bcond_without	crypt		# gb.crypt module
+%bcond_without	opengl		# gb.opengl module
+%bcond_without	corba		# gb.corba module
+%bcond_without	image		# gb.image module
+#bcond_without	desktop		# gb.desktop module
+#
+%if %{without gtk}
+%undefine	with_librsvg
+%endif
+%if %{without opengl}
+%undefine	with_sdl
+%endif
+%if %{without sdl}
+%undefine	with_SDL_mixer
+%endif
 Summary:	Gambas - a free VB-like language
 Summary(pl.UTF-8):	Gambas - wolnodostępny język podobny do VB
 Name:		gambas2
@@ -39,23 +49,37 @@ Source0:	http://dl.sourceforge.net/gambas/%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
 Patch0:		%{name}-avoid-version.patch
 URL:		http://gambas.sourceforge.net/
-BuildRequires:	gettext-tools
 %{?with_firebird:BuildRequires:	Firebird-devel}
-%{?with_sdl:BuildRequires:	SDL_mixer-devel}
+%{?with_opengl:BuildRequires:	OpenGL-GLU-devel}
+%{?with_opengl:BuildRequires:	OpenGL-GLX-devel}
+%{?with_sdl:BuildRequires:	SDL-devel >= 1.2.8}
+%{?with_sdl:BuildRequires:	SDL_image-devel}
+%{?with_SDL_mixer:BuildRequires:	SDL_mixer-devel}
 %{?with_bzip2:BuildRequires:	bzip2-devel}
-%{?with_curl:BuildRequires:	curl-devel}
-%{?with_kde:BuildRequires:	kdelibs-devel}
+%{?with_curl:BuildRequires:	curl-devel >= 7.13}
+BuildRequires:	gettext-tools
+%{?with_gtk:BuildRequires:	gtk+2-devel >= 2:2.10.0}
+%{?with_smtp:BuildRequires:	glib2-devel >= 2.0}
+%{?with_kde:BuildRequires:	kdelibs-devel >= 3}
+%{?with_v4l:BuildRequires:	libjpeg-devel}
+%{?with_v4l:BuildRequires:	libpng-devel}
+%{?with_librsvg:BuildRequires:	librsvg-devel >= 1:2.14.3}
 %{?with_mysql:BuildRequires:	mysql-devel}
 %{?with_corba:BuildRequires:	omniORB-devel >= 4}
-%{?with_pdf:BuildRequires:	poppler-devel}
-%{?with_postgresql:BuildRequires:	postgresql-backend-devel}
-%{?with_postgresql:BuildRequires:	postgresql-devel}
-%{?with_qt:BuildRequires:	qt-devel}
-%{?with_qte:BuildRequires:	qt-devel}
-%{?with_sqlite2:BuildRequires:	sqlite2-devel}
-%{?with_sqlite:BuildRequires:	sqlite-devel}
-%{?with_xml:BuildRequires:	libxml2-devel}
+%{?with_pcre:BuildRequires:	pcre-devel}
+BuildRequires:	pkgconfig
+%{?with_pdf:BuildRequires:	poppler-devel >= 0.8.0}
+%{?with_pgsql:BuildRequires:	postgresql-backend-devel}
+%{?with_pgsql:BuildRequires:	postgresql-devel}
+%{?with_qt:BuildRequires:	qt-devel >= 3}
+%{?with_qte:BuildRequires:	qte-devel >= 3}
+%{?with_sqlite2:BuildRequires:	sqlite-devel >= 2}
+%{?with_sqlite3:BuildRequires:	sqlite3-devel >= 3}
+%{?with_xml:BuildRequires:	libxml2-devel >= 2.0}
 %{?with_xls:BuildRequires:	libxslt-devel}
+%{?with_sdl:BuildRequires:	xorg-lib-libXcursor-devel}
+%{?with_sdl:BuildRequires:	xorg-lib-libXft-devel}
+%{?with_desktop:BuildRequires:	xorg-lib-libXtst-devel}
 %{?with_zlib:BuildRequires:	zlib-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -376,16 +400,16 @@ libxslt z poziomu Gambasa.
 %build
 ./reconf-all
 %configure \
-	--enable-bzlib2=%{?with_bzlib2:yes}%{!?with_bzlib2:no} \
+	--enable-bzlib2=%{?with_bzip2:yes}%{!?with_bzip2:no} \
 	--enable-zlib=%{?with_zlib:yes}%{!?with_zlib:no} \
 	--enable-mysql=%{?with_mysql:yes}%{!?with_mysql:no} \
 	--enable-odbc=%{?with_odbc:yes}%{!?with_odbc:no} \
-	--enable-postgresql=%{?with_postgresql:yes}%{!?with_postgresql:no} \
+	--enable-postgresql=%{?with_pgsql:yes}%{!?with_pgsql:no} \
 	--enable-sqlite2=%{?with_sqlite2:yes}%{!?with_sqlite2:no} \
 	--enable-sqlite3=%{?with_sqlite3:yes}%{!?with_sqlite3:no} \
 	--enable-firebird=%{?with_firebird:yes}%{!?with_firebird:no} \
 	--enable-gtk=%{?with_gtk:yes}%{!?with_gtk:no} \
-	--enable-gtksvg=%{?with_gtksvg:yes}%{!?with_gtksvg:no} \
+	--enable-gtksvg=%{?with_librsvg:yes}%{!?with_librsvg:no} \
 	--enable-pdf=%{?with_pdf:yes}%{!?with_pdf:no} \
 	--enable-net=%{?with_net:yes}%{!?with_net:no} \
 	--enable-curl=%{?with_curl:yes}%{!?with_curl:no} \
@@ -395,7 +419,7 @@ libxslt z poziomu Gambasa.
 	--enable-qte=%{?with_qte:yes}%{!?with_qte:no} \
 	--enable-kde=%{?with_kde:yes}%{!?with_kde:no} \
 	--enable-sdl=%{?with_sdl:yes}%{!?with_sdl:no} \
-	--enable-sdlsound=%{?with_sdlsound:yes}%{!?with_sdlsound:no} \
+	--enable-sdlsound=%{?with_SDL_mixer:yes}%{!?with_SDL_mixer:no} \
 	--enable-xml=%{?with_xml:yes}%{!?with_xml:no} \
 	--enable-v4l=%{?with_v4l:yes}%{!?with_v4l:no} \
 	--enable-crypt=%{?with_crypt:yes}%{!?with_crypt:no} \
